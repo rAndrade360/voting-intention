@@ -29,7 +29,7 @@ const Home: React.FC = () => {
           </Card>
           </Link>
 
-          <Link href="/voters">
+          <Link href="/voters/candidates">
           <Card>
             <h3>Sou Eleitor! &rarr;</h3>
             <p>

@@ -17,7 +17,7 @@ export const FormContainer = styled.div`
     font-size: 1.5rem;
     margin: 1rem 2rem;
   }
-  height: 90vh;
+  height: 95vh;
   margin: 1rem;
   width: 50vw;
   background-color: #fff;
@@ -37,4 +37,21 @@ export const Form = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  button {
+    width: 100%;
+    margin-top: 1rem;
+    padding: .8rem;
+    border: 0;
+    background-color: ${props => props.theme.colors.secundary};
+    color: #fff;
+    border-radius: 7px;
+    box-shadow: 2px 2px #3333;
+    cursor: pointer;
+    transition: .5s;
+  }
+
+  button:hover {
+    opacity: .8;
+  }
 `;

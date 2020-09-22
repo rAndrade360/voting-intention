@@ -11,9 +11,9 @@ export const Container = styled.div`
       width: 100%;
       font-size: 1rem;
       padding: .8rem;
-      color: #382766ff;
+      color: #382766bb;
       border: 0;
-      background-color: #eaeaea;
+      background-color: #e0e0e0;
       border-radius: 7px;
   }
   label {

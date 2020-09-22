@@ -8,13 +8,18 @@ const Register: React.FC = () => {
     <Container>
         <FormContainer>
           <h1>Primeiro, faça seu cadastro!</h1>
-        <Form>
+        <Form method="post">
           <NameContainer>
-          <Input/>
-          <Input/>
+          <Input label="nome" name="name"/>
+          <Input label="sobrenome" name="lastname"/>
           </NameContainer>
-          <Input/>
-          <Input/>
+          <NameContainer>
+          <Input label="partido" name="filiate"/>
+          <Input label="número de campanha" name="campain"/>
+          </NameContainer>
+          <Input label="imagem de prefil" name="avatar_url"/>
+          <Input label="whatsapp" name="whatsapp"/>
+          <Input label="biografia" name="bio"/>
           <button>Cadastrar</button>
         </Form>
         </FormContainer>

@@ -2,11 +2,16 @@ import React from 'react';
 
 import { Container } from './styles';
 
-const Input: React.FC = () => {
+interface InputProps{
+    label: string;
+    name: string
+}
+
+const Input: React.FC<InputProps> = ({label, name}) => {
   return (
   <Container>
-      <label>nome</label><br/>
-      <input />
+      <label htmlFor={name}>{label}</label><br/>
+      <input name={name} id={name} />
   </Container>);
 }
 
