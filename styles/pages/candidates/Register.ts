@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
@@ -17,7 +17,7 @@ export const FormContainer = styled.div`
     font-size: 1.5rem;
     margin: 1rem 2rem;
   }
-  height: 95vh;
+  height: 100%;
   margin: 1rem;
   width: 50vw;
   background-color: #fff;
