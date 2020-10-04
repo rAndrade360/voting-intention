@@ -3,19 +3,37 @@ import { Container, FormContainer, Form, NameContainer } from '../../styles/page
 import Input from '../../components/Input';
 import Select from '../../components/Select';
 import Header from '../../components/Header';
+import { FormHandles, SubmitHandler } from '@unform/core';
+import api from '../../services/api';
+
+interface FormData {
+  name: string,
+  lastname: string,
+  filiate: string,
+  campain: string,
+  cargo: string,
+  avatar_url: string,
+  whatsapp: string,
+  bio: string,
+}
+
+const options =[
+  {value: 'prefeito', label: 'Prefeito'},
+  {value: 'vereador', label: 'Vereador'},
+
+]
 
 const Register: React.FC = () => {
-  const nameRef = useRef<HTMLInputElement>(null);
-  const lastnameRef = useRef<HTMLInputElement>(null);
-  const filiateRef = useRef<HTMLInputElement>(null);
-  const campainRef = useRef<HTMLInputElement>(null);
-  const avatarRef = useRef<HTMLInputElement>(null);
-  const whatsappRef = useRef<HTMLInputElement>(null);
-  const bioRef = useRef<HTMLInputElement>(null);
+  const formRef = useRef<FormHandles>(null)
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(nameRef.current.value);
+  const handleSubmit: SubmitHandler<FormData> = async (data: object) => {
+    try {
+      await api.post('/CreateCandidate', data);
+      alert('Registrado com sucesso!');
+      formRef.current.reset();
+    }catch(error) {
+      alert('Ocorreu um erro!' + error);
+    }    
   }
   return (
     <>
@@ -23,20 +41,20 @@ const Register: React.FC = () => {
     <Container>
         <FormContainer>
           <h1>Primeiro, faça seu cadastro!</h1>
-        <Form method="post">
+        <Form onSubmit={handleSubmit} ref={formRef} method="post">
           <NameContainer>
-            <Input label="nome" ref={nameRef} name="name"/>
-            <Input label="sobrenome" ref={lastnameRef} name="lastname"/>
+            <Input label="nome" name="name"/>
+            <Input label="sobrenome" name="lastname"/>
           </NameContainer>
           <NameContainer>
-            <Input label="partido" ref={filiateRef} name="filiate"/>
-            <Input label="número de campanha" ref={campainRef} name="campain"/>
+            <Input label="partido" name="filiate"/>
+            <Input label="número de campanha" name="campain"/>
           </NameContainer>
-          <Select name="functions" label="cargo" />
-          <Input label="imagem de prefil" ref={avatarRef} name="avatar_url"/>
-          <Input label="whatsapp" ref={whatsappRef} name="whatsapp"/>
-          <Input label="biografia" ref={bioRef} name="bio"/>
-          <button onClick={(e) => handleSubmit(e)}>Cadastrar</button>
+          <Select name="functions" label="cargo" options={options} />
+          <Input label="imagem de prefil" name="avatar_url"/>
+          <Input label="whatsapp"  name="whatsapp"/>
+          <Input label="biografia" multiline name="bio"/>
+          <button type="submit">Cadastrar</button>
         </Form>
         </FormContainer>
     </Container>
